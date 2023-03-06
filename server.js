@@ -3,52 +3,55 @@ const Handlebars = require("handlebars")
 const app = express()
 const port = 3000
 
-app.set('view engine', 'handlebars'); // view engine HBS
+app.set('view engine', 'handlebars');
 app.set('views', 'view');
 
-app
-  .use('/static', express.static('static'))
-  .get('/', onhome) //index.html
-  .get('/letter', onletter) //text-editor.html
-  .get('/bottle', onbottle) //bottle-editor.html
-  .get('/drafts', ondrafts) //drafts.html
-  .get('/ocean', onocean) //bottle-throw-ocean.html
-  .get('/campfire', oncampfire) //bottle-throw-campfire.html
+app.use('/static', express.static('static'))
 
-function onhome(req,res) {
-  res.render('index.hbs')
+//ROUTES
+
+//home.hbs
+app.get('/', (req, res) => {
+  res.render('home.hbs')
   res.status(200)
-}
+})
 
-function onletter(req,res) {
-  res.render('text-editor.hbs')
+//bottle.hbs
+app.get('/bottle', (req, res) => {
+  res.render('bottle.hbs')
   res.status(200)
-}
+})
 
-function onbottle(req,res) {
-  res.render('bottle-editor.hbs')
+//campfire.hbs
+app.get('/campfire', (req, res) => {
+  res.render('campfire.hbs')
   res.status(200)
-}
+})
 
-function ondrafts(req,res) {
+//drafts.hbs
+app.get('/drafts', (req, res) => {
   res.render('drafts.hbs')
   res.status(200)
-}
+})
 
-function onocean(req,res) {
-  res.render('bottle-throw-ocean.hbs')
+//letter.hbs
+app.get('/letter', (req, res) => {
+  res.render('letter.hbs')
   res.status(200)
-}
+})
 
-function oncampfire(req,res) {
-  res.render('bottle-throw-campfire.hbs')
+//ocean.hbs
+app.get('/ocean', (req, res) => {
+  res.render('ocean.hbs')
   res.status(200)
-}
+})
 
+//404 Error
 app.get('*', (req, res) => {
   res.send('Error 404 Not found..')
 })
 
+//Check if server is live
 app.listen(port, () => {
   console.log(`Wow look at that port ${port}`)
 })
