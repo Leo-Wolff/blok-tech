@@ -10,37 +10,44 @@
     <title>Stranded - Fill Up Your Bottle</title>
 </head>
 <body>
-    <a href="letter"><img src="static/img/back-button-placeholder.png" alt="Back to last page"></a>
-    <img src="" alt="Add photo">
-    <img src="" alt="Add items">
-    <img src="static/img/confirm-button-placeholder.png" alt="Confirm">
+    <a href="letter"><img src="static/img/back-button.svg" alt="Back to last page"></a>
 
-    <form>
-    <h1>Plan Trajectory</h1>
-    <p>Age range</p>
-    <!-- slider -->
+    <section class="hidden"> <!-- Hide the section because for dev purposes the navigation will be easier to read this way -->
+        <img src="" alt="Add photo">
+        <img src="" alt="Add items">
 
-    <p>Gender</p>
-    <!-- checkbox -->
-
-    <p>Languages</p>
-    <!-- fill in languages + specify their profeciency -->
-
-    <p>Interests</p>
-    <!-- fill in interests -->
-    </form>
+    <img src="static/img/confirm-button-placeholder.png" alt="Confirm"> <!-- Confirm bottle, will send you to "... do you wanna play your trajectory first?" pop-up -->
+    </section>
 
     <!-- POP-UPS -->
 
+    <!-- Pop-up that is definitely needed but still needs to a place for navigation in the design, so for now... a comment
     <img src="static/img/close-button-placeholder.png" alt="Cancel">
     <p>Do you want to stop for now?</p>
     <a href="../">Exit</a>
-    <a href="drafts">Save as draft</a>
+    <a href="drafts">Save as draft</a>-->
 
-    <img src="static/img/close-button-placeholder.png" alt="Cancel">
-    <p>Before you throw your bottle, do you wanna plan your trajectory first?</p>
-    <a>Send it anyways</a>
-    <a>Plan trajectory</a>
+    <section class="hidden"> <!-- Hide the section because for dev purposes the navigation will be easier to read this way -->
+        <img src="static/img/close-button-placeholder.png" alt="Cancel">
+        <p>Before you throw your bottle, do you wanna plan your trajectory first?</p>
+        <a>Send it as is</a> <!--Sends you to "Where would you like to throw your bottle?" pop-up -->
+        <a>Plan trajectory</a> <!--Sends you to plan trajectory form -->
+
+        <form>
+        <h1>Plan Trajectory</h1>
+        <p>Age range</p>
+        <!-- slider -->
+
+        <p>Gender</p>
+        <!-- checkbox -->
+
+        <p>Languages</p>
+        <!-- fill in languages + specify their profeciency -->
+
+        <p>Interests</p>
+        <!-- fill in interests -->
+        </form>
+    </section>
 
     <img src="static/img/close-button-placeholder.png" alt="Cancel">
     <p>Where would you like to throw your bottle?</p>

@@ -10,33 +10,37 @@
     <title>Stranded - Write Your Letter</title>
 </head>
 <body>
-    <img src="static/img/close-button-placeholder.png" alt="Stop writing your letter">
+    <section class="hidden"> <!-- Hide the section because for dev purposes the navigation will be easier to read this way -->
+        <img src="static/img/close-button.svg" alt="Stop writing your letter"> <!-- Stop will lead to pop-up "Do you want to stop for now?" -->
 
-    <!-- Het tekst stijlen gaat opgelost worden door Quill -->
-    <form>
-        <textarea name="" id="" cols="30" rows="10"></textarea>
-    </form>
+        <!-- Text editing will be solved through a npm package, the form for this will be changed accordingly -->
+        <form>
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+        </form>
 
-    <img src="" alt="">
+        <img src="" alt=""> <!-- Will lead to trajectory pop-up form (may not be added if development takes too long) -->
 
-    <a><img src="" alt=""></a>
+        <img src="static/img/confirm-button-placeholder.png" alt="Confirm"> <!-- Confirm will lead to pop-up "Do you want to sign your letter?" -->
 
-    <img src="static/img/confirm-button-placeholder.png" alt="Confirm">
+    </section>
 
     <!-- POP-UPS -->
 
     <img src="static/img/close-button-placeholder.png" alt="Cancel">
     <p>Do you want to stop for now?</p>
-    <a href="../">Exit</a>
-    <a href="drafts">Save as draft</a>
+    <a href="../">Back to home</a> <!-- Will be labbeled Exit, but for now this is easier to understand -->
+    <a href="drafts">Save as draft</a> <!-- Will be labbeled Save as draft, but for now this is easier to understand -->
 
     <img src="static/img/close-button-placeholder.png" alt="Cancel">
     <p>Do you want to sign your letter?</p>
-    <a href="bottle">Don't sign</a>
-    <a href="bottle">Sign</a>
+    <a href="bottle">Bottle editor</a> <!-- Will be labbeled Don't sign, but for now this is easier to understand -->
+    <a href="bottle">Bottle editor</a> <!-- Will be labbeled Sign, but for now this is easier to understand -->
 
-    <form>
-        <textarea name="" id="" cols="30" rows="10"></textarea>
-    </form>
+    <!-- Insert what name your letter will be signed under -->
+    <section class="hidden"> <!-- Hide the section because for dev purposes the navigation will be easier to read this way -->
+        <form>
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+        </form>
+    </section>
 </body>
 </html>

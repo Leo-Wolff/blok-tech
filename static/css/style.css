@@ -1,3 +1,76 @@
+/* VARIABLES */
+
+:root {
+    --sky-blue: #7ECADB;
+}
+
+/* GENERAL */
+
+body {
+    background-color: var(--sky-blue);
+    width:100%;
+    overflow-x: hidden;
+}
+
+p, h1, h2, h3, a {
+    font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.nav-button {
+    width: 5em;
+}
+
+.back-button {
+    width: 2.5em;
+}
+
+/* This img property is temporary until all of the pages have proper CSS */
+
 img {
     width: 2em;
 }
+
+/* Hidden class is used to hide parts of the pages for ease of temporary reading (later on will be removed once those sections have been styled properly) */
+
+.hidden {
+    display: none;
+}
+
+/* HOME */
+
+section:first-of-type img {
+    display: none;
+}
+
+nav ul {
+    position: absolute;
+    left: calc(50% - 40%);
+    bottom: 1em;
+
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+
+    list-style-type: none;
+
+    width: 80%;
+}
+
+/* BOTTLE */
+
+/* CAMPFIRE */
+
+/* DRAFTS */
+
+ul {
+    display: none;
+    list-style-type: none;
+}
+
+/* LETTER */
+
+/* OCEAN */
