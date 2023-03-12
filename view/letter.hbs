@@ -1,45 +1,69 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" type="text/css" href="static/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="static/css/style.css" />
 
-    <!-- Setting up Quill text editor -->
-    <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet"> 
-    <script src="https://cdn.quilljs.com/1.3.7/quill.js"></script>
+		<!-- Setting up Quill text editor -->
+		<link
+			href="https://cdn.quilljs.com/1.3.7/quill.snow.css"
+			rel="stylesheet"
+		/>
+		<script src="https://cdn.quilljs.com/1.3.7/quill.js"></script>
 
-    <title>Stranded - Write Your Letter</title>
-</head>
-<body>
-    <img class="right-close-button" src="static/img/close-button.svg" alt="Stop writing your letter"> <!-- Stop will lead to pop-up "Do you want to stop for now?" -->
+		<title>Stranded - Write Your Letter</title>
+	</head>
+	<body>
+		<!-- Click on img to go to pop-up "Do you want to stop for now?" -->
+		<img
+			id="close-letter"
+			src="static/img/close-button.svg"
+			alt="Stop writing your letter"
+		/>
 
-    <!-- Quill text editor -->
-    <div id="editor"></div>
+		<!-- Quill text editor -->
+		<div id="editor"></div>
 
-    <!-- POP-UPS -->
+		<!-- Click on img to go to pop-up "Do you want to sign your letter?" -->
+		<img
+			id="confirm-letter"
+			src="static/img/confirm-button.svg"
+			alt="Confirm writing your letter"
+		/>
 
-    <img src="static/img/close-button-placeholder.png" alt="Cancel">
-    <p>Do you want to stop for now?</p>
-    <a href="../">Back to home</a> <!-- Will be labbeled Exit, but for now this is easier to understand -->
-    <a href="drafts">Save as draft</a> <!-- Will be labbeled Save as draft, but for now this is easier to understand -->
+		<!-- POP-UPS -->
+		<section id="stop-writing" class="hidden">
+			<img id="close-writing" src="static/img/close-button.svg" alt="Cancel" />
+			<p>Do you want to stop for now?</p>
+			<p>
+				<a href="../">Exit</a>
+				<a href="drafts">Save as draft</a>
+			</p>
+		</section>
 
-    <img src="static/img/close-button-placeholder.png" alt="Cancel">
-    <p>Do you want to sign your letter?</p>
-    <a href="bottle">Bottle editor</a> <!-- Will be labbeled Don't sign, but for now this is easier to understand -->
-    <a href="bottle">Bottle editor</a> <!-- Will be labbeled Sign, but for now this is easier to understand -->
+		<section id="sign-letter" class="hidden">
+			<img id="close-sign" src="static/img/close-button.svg" alt="Cancel" />
+			<p>Do you want to sign your letter?</p>
+			<p>
+				<a href="bottle">Don't sign</a>
+				<button class="styled-like-a" id="open-form">Sign</button>
+			</p>
+		</section>
 
-    <!-- Insert what name your letter will be signed under -->
-    <section class="hidden"> <!-- Hide the section because for dev purposes the navigation will be easier to read this way -->
-        <form>
-            <textarea name="" id="" cols="30" rows="10"></textarea>
-        </form>
-    </section>
+		<!-- Insert what name your letter will be signed under -->
+		<section id="sign-name" class="hidden">
+			<img id="close-form" src="static/img/close-button.svg" alt="Cancel" />
 
+			<form action="bottle" method="post">
+				<input type="text" id="signature" />
 
-    <script src="/static/javascript/script.js"></script>
-    <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
-</body>
+				<input type="submit" value="Sign your letter" />
+			</form>
+		</section>
+
+		<script src="/static/javascript/script.js"></script>
+		<script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
+	</body>
 </html>

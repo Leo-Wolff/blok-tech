@@ -1,71 +1,128 @@
-require('dotenv').config()
-const express = require('express')
-const Handlebars = require("handlebars")
-const app = express()
-const port = 3000
+require("dotenv").config();
+const express = require("express");
+const Handlebars = require("handlebars");
+const app = express();
+const port = 3000;
 
-app.set('view engine', 'handlebars');
-app.set('views', 'view');
+app.set("view engine", "handlebars");
+app.set("views", "view");
 
-app.use('/static', express.static('static'))
+app.use("/static", express.static("static"));
 
 //ROUTES
 
 //home.hbs
-app.get('/', (req, res) => {
-  res.render('home.hbs')
-  res.status(200)
-})
+app.get("/", (req, res) => {
+	res.render("home.hbs");
+	res.status(200);
+});
 
 //bottle.hbs
-app.get('/bottle', (req, res) => {
-  res.render('bottle.hbs')
-  res.status(200)
-})
+app.get("/bottle", (req, res) => {
+	res.render("bottle.hbs");
+	res.status(200);
+});
 
 //campfire.hbs
-app.get('/campfire', (req, res) => {
-  res.render('campfire.hbs')
-  res.status(200)
-})
+app.get("/campfire", (req, res) => {
+	res.render("campfire.hbs");
+	res.status(200);
+});
 
 //drafts.hbs
-app.get('/drafts', (req, res) => {
-  res.render('drafts.hbs')
-  res.status(200)
-})
+app.get("/drafts", (req, res) => {
+	res.render("drafts.hbs");
+	res.status(200);
+});
 
 //letter.hbs
-app.get('/letter', (req, res) => {
-  res.render('letter.hbs')
-  res.status(200)
-})
+app.get("/letter", (req, res) => {
+	res.render("letter.hbs");
+	res.status(200);
+});
+
+app.post("/bottle", (req, res) => {
+	console.log('posted')
+		const db = client.db('bloktech');
+		const collectionLetters = db.collection('letters');
+		CreateNewDraft(collectionLetters, 'hier komt de draft te staan'); // kan waarschijnlijk ophalen met body-parser
+	res.render("bottle.hbs");
+});
 
 //ocean.hbs
-app.get('/ocean', (req, res) => {
-  res.render('ocean.hbs')
-  res.status(200)
-})
+app.get("/ocean", (req, res) => {
+	res.render("ocean.hbs");
+	res.status(200);
+});
 
 //404 Error
-app.get('*', (req, res) => {
-  res.send('Error 404 Not found..')
-})
+app.get("*", (req, res) => {
+	res.send("Error 404 Not found..");
+});
 
 //Check if server is live
 app.listen(port, () => {
-  console.log(`Wow look at that port ${port}`)
-})
+	console.log(`Wow look at that port ${port}`);
+});
 
 //Database connection
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion } = require("mongodb");
 
-const uri = 'mongodb+srv://' + process.env.DB_USERNAME + ':' + process.env.DB_PASS + '@' + process.env.DB_NAME + '.' + process.env.DB_HOST + '/?retryWrites=true&w=majority';
+const uri =
+	"mongodb+srv://" +
+	process.env.DB_USERNAME +
+	":" +
+	process.env.DB_PASS +
+	"@" +
+	process.env.DB_NAME +
+	"." +
+	process.env.DB_HOST +
+	"/?retryWrites=true&w=majority";
 
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
+const client = new MongoClient(uri, {
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+	serverApi: ServerApiVersion.v1,
 });
+
+
+async function connectToCluster() {
+	try {
+		console.log('Connecting to MongoDB Atlas cluster...');
+		await client.connect();
+		console.log('Successfully connected to MongoDB Atlas!');
+		return client;
+	} catch (error) {
+		console.error('Connection to MongoDB Atlas failed!', error);
+		process.exit();
+	}
+}
+
+getDataFromDatabase();
+async function getDataFromDatabase() {
+	try {
+		await connectToCluster();
+		const db = client.db('bloktech');
+		const collectionLetters = db.collection('letters'); // collectie naam
+		const collectionBottles = db.collection('bottles');
+		
+		// await createStudentDocument(collectionLetters);
+		console.log(await GetDraftsFromDatabase(collectionLetters)); 
+		console.log(await GetDraftsFromDatabase(collectionBottles));
+
+	} finally {
+	}
+}
+
+async function CreateNewDraft(collection, content) {
+	const draft = {
+		Letter: content,
+		Date: new Date().toISOString().slice(0, 10),
+	};
+ 
+	await collection.insertOne(draft);
+ }
+
+async function GetDraftsFromDatabase(collection) {
+	return collection.find().toArray();
+}
