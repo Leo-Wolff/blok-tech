@@ -62,8 +62,6 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 
 const uri = 'mongodb+srv://' + process.env.DB_USERNAME + ':' + process.env.DB_PASS + '@' + process.env.DB_NAME + '.' + process.env.DB_HOST + '/?retryWrites=true&w=majority';
 
-console.log(uri)
-
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 client.connect(err => {

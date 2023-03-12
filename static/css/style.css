@@ -2,6 +2,7 @@
 
 :root {
     --sky-blue: #7ECADB;
+    --almond: #FBE5D0;
 }
 
 /* GENERAL */
@@ -72,5 +73,57 @@ ul {
 }
 
 /* LETTER */
+
+.right-close-button {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    float: right;
+}
+
+.ql-snow {
+    position: absolute;
+    top: 4em;
+    left: calc(50% - (90% / 2));
+    background-color: grey;
+    border: 2px solid black;
+    width: 90%;
+    border: 0;
+    padding: 0;
+    border-radius: 5px;
+}
+
+.ql-toolbar {
+    text-align: center;
+    background: none;
+    border: 0;
+    padding: 0;
+}
+
+body .ql-toolbar.ql-snow {
+    border: 0;
+}
+
+.ql-toolbar .ql-formats .ql-bold, .ql-toolbar .ql-formats .ql-italic, .ql-toolbar .ql-formats .ql-underline, .ql-toolbar .ql-formats .ql-strike, .ql-toolbar .ql-formats .ql-clean {
+    background-color: white;
+    border: 1.5px solid black;
+    border-radius: 360px;
+    margin: 0 .75em 0 .75em;
+
+}
+
+.ql-container {
+    top: 7.5em;
+    left: .75em;
+    background-color: var(--almond);
+    border: 0;
+    padding: 0;
+    font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1em;
+}
+
+#editor {
+    height: 42.5em;
+}
 
 /* OCEAN */

@@ -7,22 +7,17 @@
 
     <link rel="stylesheet" type="text/css" href="static/css/style.css" />
 
+    <!-- Setting up Quill text editor -->
+    <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet"> 
+    <script src="https://cdn.quilljs.com/1.3.7/quill.js"></script>
+
     <title>Stranded - Write Your Letter</title>
 </head>
 <body>
-    <section class="hidden"> <!-- Hide the section because for dev purposes the navigation will be easier to read this way -->
-        <img src="static/img/close-button.svg" alt="Stop writing your letter"> <!-- Stop will lead to pop-up "Do you want to stop for now?" -->
+    <img class="right-close-button" src="static/img/close-button.svg" alt="Stop writing your letter"> <!-- Stop will lead to pop-up "Do you want to stop for now?" -->
 
-        <!-- Text editing will be solved through a npm package, the form for this will be changed accordingly -->
-        <form>
-            <textarea name="" id="" cols="30" rows="10"></textarea>
-        </form>
-
-        <img src="" alt=""> <!-- Will lead to trajectory pop-up form (may not be added if development takes too long) -->
-
-        <img src="static/img/confirm-button-placeholder.png" alt="Confirm"> <!-- Confirm will lead to pop-up "Do you want to sign your letter?" -->
-
-    </section>
+    <!-- Quill text editor -->
+    <div id="editor"></div>
 
     <!-- POP-UPS -->
 
@@ -42,5 +37,9 @@
             <textarea name="" id="" cols="30" rows="10"></textarea>
         </form>
     </section>
+
+
+    <script src="/static/javascript/script.js"></script>
+    <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
 </body>
 </html>
