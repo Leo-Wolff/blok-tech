@@ -8,13 +8,23 @@
 
 		<title>SandScript - Throw Your Bottle</title>
 	</head>
-	<body>
+	<body id="blue-background">
 		<!-- This is the end of the route, there is no way back to the home page after this or confirm screen yet, will be ended if there is enough time left -->
-		<a href="bottle"><img
-				src="static/img/close-button-placeholder.png"
-				alt="Cancel"
-			/></a>
-		<img src="" alt="Filled bottle that can be thrown" />
+		<div class="header-background">
+			<a href="bottle">
+				<img
+					id="close-button"
+					src="static/img/close-button.svg"
+					alt="Stop writing your letter"
+				/>
+			</a>
+		</div>
+
+		<img
+			class="filled-bottle"
+			src="static/img/bottle-letter-closed.svg"
+			alt="Filled bottle that can be thrown"
+		/>
 
 	</body>
 </html>

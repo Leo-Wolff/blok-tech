@@ -20,7 +20,7 @@
 
 			<!-- Click on img to go to pop-up "Do you want to stop for now?" -->
 			<img
-				id="close-letter"
+				id="close-button"
 				src="static/img/close-button.svg"
 				alt="Stop writing your letter"
 			/>
@@ -33,9 +33,9 @@
 		<div id="editor"></div>
 
 		<!-- POP-UPS -->
-		<section id="stop-writing" class="hidden">
-			<img id="close-writing" src="static/img/close-button.svg" alt="Cancel" />
-			<p>Do you want to stop for now?</p>
+		<section id="stop" class="hidden">
+			<img id="close-stop" src="static/img/close-button.svg" alt="Cancel" />
+			<h2>Do you want to stop for now?</h2>
 			<p>
 				<a href="../">Exit</a>
 				<a href="drafts">Save as draft</a>
@@ -44,7 +44,7 @@
 
 		<section id="sign-letter" class="hidden">
 			<img id="close-sign" src="static/img/close-button.svg" alt="Cancel" />
-			<p>Do you want to sign your letter?</p>
+			<h2>Do you want to sign your letter?</h2>
 			<p>
 				<a href="bottle">Don't sign</a>
 				<button class="styled-like-a" id="open-form">Sign</button>
@@ -63,6 +63,5 @@
 		</section>
 
 		<script src="/static/javascript/script.js"></script>
-		<script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
 	</body>
 </html>
