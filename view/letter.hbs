@@ -13,25 +13,24 @@
 		/>
 		<script src="https://cdn.quilljs.com/1.3.7/quill.js"></script>
 
-		<title>Stranded - Write Your Letter</title>
+		<title>SandScript - Write Your Letter</title>
 	</head>
-	<body>
-		<!-- Click on img to go to pop-up "Do you want to stop for now?" -->
-		<img
-			id="close-letter"
-			src="static/img/close-button.svg"
-			alt="Stop writing your letter"
-		/>
+	<body id="white-background">
+		<div class="header-background">
+
+			<!-- Click on img to go to pop-up "Do you want to stop for now?" -->
+			<img
+				id="close-letter"
+				src="static/img/close-button.svg"
+				alt="Stop writing your letter"
+			/>
+
+			<!-- Click on img to go to pop-up "Do you want to sign your letter?" -->
+			<button id="confirm-letter">Send letter</button>
+		</div>
 
 		<!-- Quill text editor -->
 		<div id="editor"></div>
-
-		<!-- Click on img to go to pop-up "Do you want to sign your letter?" -->
-		<img
-			id="confirm-letter"
-			src="static/img/confirm-button.svg"
-			alt="Confirm writing your letter"
-		/>
 
 		<!-- POP-UPS -->
 		<section id="stop-writing" class="hidden">

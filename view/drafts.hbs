@@ -6,15 +6,21 @@
 
 		<link rel="stylesheet" type="text/css" href="static/css/style.css" />
 
-		<title>Stranded - Drafts</title>
+		<title>SandScript - Drafts</title>
 	</head>
 	<body id="black-background">
-		<a href="../"><img
-				class="back-button"
-				src="static/img/back-button.svg"
-				alt="Back to last page"
-			/></a>
-		<h1>Drafts</h1>
+		<div class="header-background">
+
+			<a href="../"><img
+					class="back-button"
+					src="static/img/back-button.svg"
+					alt="Back to last page"
+				/></a>
+
+			<h1>Drafts</h1>
+
+			<a id="confirm-letter" href="letter">Write new letter</a>
+		</div>
 
 		<!-- Drafts are fetched from the database -->
 
@@ -27,10 +33,12 @@
 			</li>
 		</ul>
 
-		<a href="letter"><img
-				class="write-letter"
-				src="static/img/write-letter-button.svg"
-				alt="Write letter button"
-			/></a>
+		{{#each letters}}
+			<div class="draft-item">
+				<p>{{{this.text}}}</p>
+				<p>- {{this.signed}}</p>
+				<p>Last updated: {{this.dateUpdated}}</p>
+			</div>
+		{{/each}}
 	</body>
 </html>

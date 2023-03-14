@@ -30,9 +30,11 @@ app.get("/campfire", (req, res) => {
 });
 
 //drafts.hbs
-app.get("/drafts", (req, res) => {
-	res.render("drafts.hbs");
-	res.status(200);
+app.get("/drafts", async (req, res) => {
+	let draft = await getDataFromDatabase("letters");
+	res.render("drafts.hbs", {
+		letters: draft,
+	});
 });
 
 //letter.hbs
@@ -42,10 +44,10 @@ app.get("/letter", (req, res) => {
 });
 
 app.post("/bottle", (req, res) => {
-	console.log('posted')
-		const db = client.db('bloktech');
-		const collectionLetters = db.collection('letters');
-		CreateNewDraft(collectionLetters, 'hier komt de draft te staan'); // kan waarschijnlijk ophalen met body-parser
+	console.log("posted");
+	const db = client.db("bloktech");
+	const collectionLetters = db.collection("letters");
+	CreateNewDraft(collectionLetters, "hier komt de draft te staan"); // kan waarschijnlijk ophalen met body-parser
 	res.render("bottle.hbs");
 });
 
@@ -85,31 +87,26 @@ const client = new MongoClient(uri, {
 	serverApi: ServerApiVersion.v1,
 });
 
-
 async function connectToCluster() {
 	try {
-		console.log('Connecting to MongoDB Atlas cluster...');
+		console.log("Connecting to MongoDB Atlas cluster...");
 		await client.connect();
-		console.log('Successfully connected to MongoDB Atlas!');
+		console.log("Successfully connected to MongoDB Atlas!");
 		return client;
 	} catch (error) {
-		console.error('Connection to MongoDB Atlas failed!', error);
+		console.error("Connection to MongoDB Atlas failed!", error);
 		process.exit();
 	}
 }
 
-getDataFromDatabase();
-async function getDataFromDatabase() {
+async function getDataFromDatabase(dbCollection) {
 	try {
 		await connectToCluster();
-		const db = client.db('bloktech');
-		const collectionLetters = db.collection('letters'); // collectie naam
-		const collectionBottles = db.collection('bottles');
-		
-		// await createStudentDocument(collectionLetters);
-		console.log(await GetDraftsFromDatabase(collectionLetters)); 
-		console.log(await GetDraftsFromDatabase(collectionBottles));
+		const db = client.db("bloktech");
+		let collection = db.collection(dbCollection); // collectie naam
+		collection = GetDraftsFromDatabase(collection);
 
+		return collection;
 	} finally {
 	}
 }
@@ -119,9 +116,9 @@ async function CreateNewDraft(collection, content) {
 		Letter: content,
 		Date: new Date().toISOString().slice(0, 10),
 	};
- 
+
 	await collection.insertOne(draft);
- }
+}
 
 async function GetDraftsFromDatabase(collection) {
 	return collection.find().toArray();
