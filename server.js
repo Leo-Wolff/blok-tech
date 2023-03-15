@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const Handlebars = require("handlebars");
+// const bodyParser = require("body-parser");
 const app = express();
 const port = 3000;
 
@@ -47,7 +48,7 @@ app.post("/bottle", (req, res) => {
 	console.log("posted");
 	const db = client.db("bloktech");
 	const collectionLetters = db.collection("letters");
-	CreateNewDraft(collectionLetters, "hier komt de draft te staan"); // kan waarschijnlijk ophalen met body-parser
+	CreateNewDraft(collectionLetters, "hier komt draft te staan"); // kan waarschijnlijk ophalen met body-parser
 	res.render("bottle.hbs");
 });
 
