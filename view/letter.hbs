@@ -30,7 +30,7 @@
 		</div>
 
 		<!-- Quill text editor -->
-		<div id="editor"></div>
+		<div id="editor" name="letter"></div>
 
 		<!-- POP-UPS -->
 		<section id="stop" class="hidden">
@@ -56,9 +56,11 @@
 			<img id="close-form" src="static/img/close-button.svg" alt="Cancel" />
 
 			<form action="bottle" method="post">
-				<input type="text" id="signature" />
+				<input id="content" type="hidden" name="content" />
 
-				<input type="submit" value="Sign your letter" />
+				<input id="signature" type="text" name="signed" />
+
+				<input id="submit-letter" type="submit" value="Sign your letter" />
 			</form>
 		</section>
 

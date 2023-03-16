@@ -1,29 +1,15 @@
 //VARIABLES
 // Stop for now pop-up
-const closeButton = document.getElementById("close-button");
 const stopPopup = document.getElementById("stop");
-const closeStopPopupButton = document.getElementById("close-stop");
 
 // letter.hbs pop-ups
-const confirmLetterButton = document.getElementById("confirm-letter");
-
-const closeSignButton = document.getElementById("close-sign");
 const signPopup = document.getElementById("sign-letter");
-
-const closeFormButton = document.getElementById("close-form");
-const openFormButton = document.getElementById("open-form");
-
 const namePopup = document.getElementById("sign-name");
 
 // bottle.hbs pop-ups
-const confirmBottleButton = document.getElementById("confirm-bottle");
-
-const closePlanButton = document.getElementById("close-plan");
 const planPopup = document.getElementById("plan-trajectory");
-
-const openDestinationButton = document.getElementById("open-destination");
-const closeDestinationButton = document.getElementById("close-destination");
 const destinationPopup = document.getElementById("destination");
+const trajectoryPopup = document.getElementById("trajectory");
 
 //QUILL EDITOR
 var toolbarOptions = [
@@ -42,70 +28,105 @@ var quill = new Quill("#editor", {
 });
 
 // POP-UPS
-closeButton.addEventListener("click", () => {
+document.getElementById("close-button").addEventListener("click", () => {
 	stopPopup.classList.remove("hidden");
 	console.log("Open stop writing letter pop-up");
 });
 
-closeStopPopupButton.addEventListener("click", () => {
+document.getElementById("close-stop").addEventListener("click", () => {
 	stopPopup.classList.add("hidden");
 	console.log("Close stop writing letter pop-up");
 });
 
 // letter.hbs pop-ups
-if (confirmLetterButton != null) {
-	confirmLetterButton.addEventListener("click", () => {
+if (document.getElementById("confirm-letter") != null) {
+	document.getElementById("confirm-letter").addEventListener("click", () => {
 		signPopup.classList.remove("hidden");
 		console.log("Open sign or not sign letter pop-up");
 	});
 }
 
-if (openFormButton != null) {
-	openFormButton.addEventListener("click", () => {
+if (document.getElementById("open-form") != null) {
+	document.getElementById("open-form").addEventListener("click", () => {
 		namePopup.classList.remove("hidden");
 		console.log("Open sign letter form pop-up");
 	});
 }
 
-if (closeSignButton != null) {
-	closeSignButton.addEventListener("click", () => {
+if (document.getElementById("close-sign") != null) {
+	document.getElementById("close-sign").addEventListener("click", () => {
 		signPopup.classList.add("hidden");
 		console.log("Close sign or not sign letter pop-up");
 	});
 }
 
-if (closeFormButton != null) {
-	closeFormButton.addEventListener("click", () => {
+if (document.getElementById("close-form") != null) {
+	document.getElementById("close-form").addEventListener("click", () => {
 		namePopup.classList.add("hidden");
 		console.log("Close sign letter form pop-up");
 	});
 }
 
+if (document.getElementById("open-form") != null) {
+	document.getElementById("open-form").addEventListener("click", () => {
+		var delta = quill.container.firstChild.innerHTML;
+		console.log(delta);
+		document.getElementById("content").value = delta;
+		console.log(document.getElementById("content").value);
+	});
+}
+
 // bottle.hbs pop-ups
-if (confirmBottleButton != null) {
-	confirmBottleButton.addEventListener("click", () => {
+if (document.getElementById("confirm-bottle") != null) {
+	document.getElementById("confirm-bottle").addEventListener("click", () => {
 		planPopup.classList.remove("hidden");
 		console.log("Open plan trajectory pop-up");
 	});
 }
 
-if (closePlanButton != null) {
-	closePlanButton.addEventListener("click", () => {
+if (document.getElementById("close-plan") != null) {
+	document.getElementById("close-plan").addEventListener("click", () => {
 		planPopup.classList.add("hidden");
 		console.log("Close plan trajectory pop-up");
 	});
 }
 
-if (openDestinationButton != null) {
-	openDestinationButton.addEventListener("click", () => {
+if (document.getElementById("open-destination") != null) {
+	document.getElementById("open-destination").addEventListener("click", () => {
 		destinationPopup.classList.remove("hidden");
 		console.log("Open plan trajectory pop-up");
 	});
 }
 
-if (closeDestinationButton != null) {
-	closeDestinationButton.addEventListener("click", () => {
+if (document.getElementById("close-destination") != null) {
+	document.getElementById("close-destination").addEventListener("click", () => {
 		destinationPopup.classList.add("hidden");
 		console.log("Close plan trajectory pop-up");
+	});
+}
+
+if (document.getElementById("open-trajectory-button") != null) {
+	document
+		.getElementById("open-trajectory-button")
+		.addEventListener("click", () => {
+			trajectoryPopup.classList.remove("hidden");
+			console.log("Open plan trajectory form");
+		});
+}
+
+if (document.getElementById("open-trajectory-popup") != null) {
+	document
+		.getElementById("open-trajectory-popup")
+		.addEventListener("click", () => {
+			planPopup.classList.add("hidden");
+			trajectoryPopup.classList.remove("hidden");
+			console.log("Open plan trajectory form");
+		});
+}
+
+if (document.getElementById("close-trajectory") != null) {
+	document.getElementById("close-trajectory").addEventListener("click", () => {
+		trajectoryPopup.classList.add("hidden");
+		console.log("close plan trajectory form");
 	});
 }
