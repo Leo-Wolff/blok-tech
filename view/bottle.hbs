@@ -5,61 +5,171 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 		<link rel="stylesheet" type="text/css" href="static/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="static/css/slider.css" />
+
+		<!-- Setting up Quill text editor -->
+		<link
+			href="https://cdn.quilljs.com/1.3.7/quill.snow.css"
+			rel="stylesheet"
+		/>
+		<script src="https://cdn.quilljs.com/1.3.7/quill.js"></script>
+
+		<!-- slider -->
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+		</script>
 
 		<title>SandScript - Fill Up Your Bottle</title>
 	</head>
-	<body>
-		<a href="letter"><img
-				src="static/img/back-button.svg"
-				alt="Back to last page"
-			/></a>
+	<body id="blue-background">
+		<div class="header-background">
 
-		<section class="hidden">
-			<!-- Hide the section because for dev purposes the navigation will be easier to read this way -->
-			<img src="" alt="Add photo" />
-			<img src="" alt="Add items" />
+			<!-- Click on img to go to pop-up "Do you want to stop for now?" -->
+			<img
+				id="close-button"
+				src="static/img/close-button.svg"
+				alt="Stop writing your letter"
+			/>
 
-			<img src="static/img/confirm-button-placeholder.png" alt="Confirm" />
 			<!-- Confirm bottle, will send you to "... do you wanna play your trajectory first?" pop-up -->
-		</section>
+			<button id="confirm-bottle">Send bottle</button>
+		</div>
+
+		<img
+			class="bottlehbs-button"
+			src="static/img/camera-button.svg"
+			alt="Add photo"
+		/>
+		<img
+			class="bottlehbs-button"
+			src="static/img/trinket-button.svg"
+			alt="Add items"
+		/>
+		<img
+			id="open-trajectory-button"
+			class="bottlehbs-button"
+			src="static/img/filter-button.svg"
+			alt="Filter or plan trajectory"
+		/>
+
+		<img
+			class="bottle-editor"
+			src="static/img/bottle-letter-open.svg"
+			alt="Your bottle that currently has a letter in it"
+		/>
 
 		<!-- POP-UPS -->
 
-		<!-- Pop-up that is definitely needed but still needs to a place for navigation in the design, so for now... a comment
-    <img src="static/img/close-button-placeholder.png" alt="Cancel">
-    <p>Do you want to stop for now?</p>
-    <a href="../">Exit</a>
-    <a href="drafts">Save as draft</a>-->
+		<section id="stop" class="hidden">
+			<img id="close-stop" src="static/img/close-button.svg" alt="Cancel" />
+			<h2>Do you want to stop for now?</h2>
+			<p>
+				<a href="../">Exit</a>
+				<a href="drafts">Save as draft</a>
+			</p>
+		</section>
 
-		<section class="hidden">
+		<section id="plan-trajectory" class="hidden">
 			<!-- Hide the section because for dev purposes the navigation will be easier to read this way -->
-			<img src="static/img/close-button-placeholder.png" alt="Cancel" />
-			<p>Before you throw your bottle, do you wanna plan your trajectory first?</p>
-			<a>Send it as is</a>
-			<!--Sends you to "Where would you like to throw your bottle?" pop-up -->
-			<a>Plan trajectory</a>
-			<!--Sends you to plan trajectory form -->
+			<img id="close-plan" src="static/img/close-button.svg" alt="Cancel" />
+			<h2>Before you throw your bottle, do you wanna plan your trajectory first?</h2>
+			<p>
+				<a id="open-destination">Send it as is</a>
+				<!--Sends you to "Where would you like to throw your bottle?" pop-up -->
+				<button id="open-trajectory-popup" class="styled-like-a">Plan trajectory</button>
+				<!--Sends you to plan trajectory form -->
+			</p>
+		</section>
 
-			<form>
-				<h1>Plan Trajectory</h1>
+		<section id="trajectory" class="hidden">
+			<img
+				id="close-trajectory"
+				src="static/img/close-button-black.svg"
+				alt="Stop writing your letter"
+			/>
+
+			<h1>Plan Trajectory</h1>
+
+			<form action="bottle" method="post">
+				<input type="submit" value="Save settings" />
+
 				<p>Age range</p>
-				<!-- slider -->
+
+				<!-- source: https://codepen.io/tylerama/pen/YwvpBW?editors=0110 -->
+
+				<section class="range-slider container">
+					<span class="output outputOne"></span>
+					<span class="output outputTwo"></span>
+					<span class="full-range"></span>
+					<span class="incl-range"></span>
+					<input
+						name="rangeOne"
+						value="10"
+						min="0"
+						max="100"
+						step="1"
+						type="range"
+					/>
+					<input
+						name="rangeTwo"
+						value="90"
+						min="0"
+						max="100"
+						step="1"
+						type="range"
+					/>
+				</section>
 
 				<p>Gender</p>
-				<!-- checkbox -->
-
-				<p>Languages</p>
-				<!-- fill in languages + specify their profeciency -->
-
-				<p>Interests</p>
-				<!-- fill in interests -->
+				<div class="checkboxes">
+					<input id="check1" type="checkbox" name="gender" />
+					<label class="check-option" for="check1">Male</label>
+					<input id="check2" type="checkbox" name="gender" />
+					<label class="check-option" for="check2">Female</label>
+					<input id="check3" type="checkbox" name="gender" />
+					<label class="check-option" for="check3">Non-binary</label>
+				</div>
 			</form>
 		</section>
 
-		<img src="static/img/close-button-placeholder.png" alt="Cancel" />
-		<p>Where would you like to throw your bottle?</p>
-		<a href="campfire">Campfire</a>
-		<a href="ocean">Ocean</a>
-		<a href="drafts">Save as draft</a>
+		<section id="destination" class="hidden">
+			<img
+				id="close-destination"
+				src="static/img/close-button.svg"
+				alt="Cancel"
+			/>
+			<h2>Where would you like to throw your bottle?</h2>
+			<ul>
+				<li>
+					<a href="campfire">
+						<img
+							src="static/img/campfire-button.svg"
+							alt="Button that leads to campfire page"
+						/>
+						Campfire
+					</a>
+				</li>
+				<li>
+					<a href="ocean">
+						<img
+							src="static/img/ocean-button.svg"
+							alt="Button that leads to ocean page"
+						/>
+						Ocean
+					</a>
+				</li>
+				<li>
+					<a href="drafts">
+						<img
+							src="static/img/drafts-button.svg"
+							alt="Button that leads to drafts page"
+						/>
+						Save as draft
+					</a>
+				</li>
+			</ul>
+		</section>
+
+		<script src="/static/javascript/script.js"></script>
+		<script src="/static/javascript/slider.js"></script>
 	</body>
 </html>

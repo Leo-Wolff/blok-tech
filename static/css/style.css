@@ -52,6 +52,14 @@ img {
 	display: none;
 }
 
+#white-background {
+	background-color: var(--almond);
+}
+
+#blue-background {
+	background-color: var(--sky-blue);
+}
+
 /* HOME */
 
 nav ul {
@@ -73,7 +81,146 @@ nav ul {
 
 /* BOTTLE */
 
+/* classes */
+
+.bottlehbs-button {
+	position: absolute;
+	right: 1em;
+	float: right;
+
+	width: 5em;
+}
+
+.bottlehbs-button:first-of-type {
+	top: 5em;
+}
+
+.bottlehbs-button:nth-of-type(2) {
+	top: 12em;
+}
+
+.bottlehbs-button#open-trajectory-button {
+	bottom: 1em;
+}
+
+.bottle-editor {
+	position: absolute;
+	top: calc(50% - (3.5em + (12.5em / 1.25)));
+	left: 2em;
+
+	width: 12.5em;
+}
+
+/* ids */
+
+#trajectory {
+	position: absolute;
+	top: 25em;
+
+	padding: 0.5em 0.5em 5em 0.5em;
+	border-radius: 5px;
+
+	width: calc(100% - 2.25em);
+
+	color: var(--black);
+	background-color: var(--white);
+}
+
+#trajectory h1 {
+	margin: 2em 0 0 0.25em;
+
+	color: var(--black);
+}
+
+#trajectory p {
+	font-size: 1.125em;
+	font-weight: bold;
+}
+
+#trajectory p:first-of-type {
+	margin-top: 0.25em;
+}
+
+#trajectory p:nth-of-type(2) {
+	margin-top: 4em;
+}
+
+#trajectory #close-trajectory {
+	width: 1.5em;
+}
+
+#trajectory form {
+	margin-left: 0.25em;
+}
+
+#trajectory input[type="submit"] {
+	position: absolute;
+	top: 0.5em;
+	right: 1em;
+	float: right;
+
+	border: solid 1px var(--black);
+	padding: 0.5em 1.5em 0.5em 1.5em;
+
+	font-size: 1em;
+	background-color: var(--almond);
+}
+
+#trajectory input[type="checkbox"] {
+	display: none;
+}
+
+.checkboxes {
+	display: flex;
+	justify-content: space-around;
+	gap: 1em;
+
+	width: calc(100% - 1em);
+}
+
+.check-option {
+	border: 2px solid var(--black);
+	border-radius: 3px;
+	padding: 0.5em;
+
+	color: var(--black);
+}
+
+#check1:checked:checked ~ .check-option:first-of-type,
+#check2:checked:checked ~ .check-option:nth-of-type(2),
+#check3:checked:checked ~ .check-option:nth-of-type(3) {
+	background-color: var(--sky-blue);
+}
+
+body #destination {
+	padding-bottom: 1em;
+}
+
+#destination ul {
+	display: flex;
+	justify-content: space-between;
+	gap: 1em;
+
+	margin-left: -1em;
+
+	width: calc(100% - 3em);
+
+	list-style-type: none;
+}
+
+#destination ul img {
+	width: 4em;
+}
+
 /* CAMPFIRE */
+
+.filled-bottle {
+	position: absolute;
+	top: calc(50% - (3.5em + (12.5em / 1.25)));
+	left: 2em;
+
+	width: 12.5em;
+}
 
 /* DRAFTS */
 
@@ -87,7 +234,7 @@ h1 {
 
 .back-button {
 	position: absolute;
-	top: 0.7em;
+	top: 0.75em;
 	left: 1em;
 
 	width: 1.5em;
@@ -133,7 +280,7 @@ h1 {
 .draft-item {
 	width: calc(100% - 4em);
 
-	margin-bottom: 1em;
+	margin: 0 0 1em 0.25em;
 	border-radius: 5px;
 	padding: 1em;
 
@@ -153,10 +300,6 @@ h1 {
 }
 
 /* ids */
-
-#black-background {
-	background-color: var(--black);
-}
 
 /* LETTER */
 
@@ -215,11 +358,8 @@ body .ql-toolbar.ql-snow {
 	height: 45em;
 }
 
-#white-background {
-	background-color: var(--almond);
-}
-
-#close-letter {
+#close-button,
+#close-trajectory {
 	position: absolute;
 	top: 0.75em;
 	left: 1em;
@@ -227,14 +367,16 @@ body .ql-toolbar.ql-snow {
 	width: 2em;
 }
 
-#close-letter:hover,
+#close-button:hover,
 #confirm-letter:hover,
+#confirm-bottle:hover,
 .styled-like-a:hover,
 #sign-name input[type="submit"] {
 	cursor: pointer;
 }
 
-#confirm-letter {
+#confirm-letter,
+#confirm-bottle {
 	position: absolute;
 	top: 0.5em;
 	right: 1em;
@@ -250,15 +392,18 @@ body .ql-toolbar.ql-snow {
 	background-color: var(--burnt-sienna);
 }
 
-#confirm-letter:hover {
+#confirm-letter:hover,
+#confirm-bottle:hover {
 	box-shadow: none;
 }
 
 /* pop-ups */
 
-#stop-writing,
+#stop,
 #sign-letter,
-#sign-name {
+#sign-name,
+#plan-trajectory,
+#destination {
 	position: absolute;
 	top: calc(50% - (137px / 2));
 	left: calc(50% - 10em);
@@ -274,9 +419,11 @@ body .ql-toolbar.ql-snow {
 	background-color: var(--black);
 }
 
-#stop-writing img,
+#stop img,
 #sign-letter img,
-#sign-name img {
+#sign-name img,
+#plan-trajectory img,
+#close-destination {
 	position: absolute;
 	top: 1em;
 	right: 1em;
@@ -285,14 +432,20 @@ body .ql-toolbar.ql-snow {
 	width: 1.25em;
 }
 
-#stop-writing img:hover,
+#stop img:hover,
 #sign-letter img:hover,
-#sign-name img:hover {
+#sign-name img:hover,
+#plan-trajectory img:hover,
+#destination img:hover,
+#close-trajectory:hover,
+#trajectory input[type="submit"] {
 	cursor: pointer;
 }
 
-#stop-writing p:first-of-type,
-#sign-letter p:first-of-type {
+#stop h2,
+#sign-letter h2,
+#plan-trajectory h2,
+#destination h2 {
 	margin: 0;
 	border-radius: 5px 5px 0 0;
 	padding: 1em 15% 0.5em 15%;
@@ -303,8 +456,10 @@ body .ql-toolbar.ql-snow {
 	font-size: 1.25em;
 }
 
-#stop-writing p,
-#sign-letter p:nth-of-type(2) {
+#stop p,
+#sign-letter p,
+#plan-trajectory p,
+#destination p {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -312,8 +467,10 @@ body .ql-toolbar.ql-snow {
 	margin: 0;
 }
 
-#stop-writing a,
+#stop a,
 #sign-letter a,
+#plan-trajectory a,
+#destination a,
 .styled-like-a {
 	border: 0;
 	padding: 1em 0 1em 0;
@@ -325,14 +482,15 @@ body .ql-toolbar.ql-snow {
 	color: var(--almond);
 }
 
-#stop-writing a:first-of-type,
-#sign-letter a:first-of-type {
+#stop a:first-of-type,
+#sign-letter a:first-of-type,
+#plan-trajectory a:first-of-type {
 	border-radius: 0 0 0 5px;
 	box-shadow: inset 3px 3px var(--burnt-sienna),
 		inset -3px -3px var(--burnt-sienna);
 }
 
-#stop-writing a:nth-of-type(2),
+#stop a:nth-of-type(2),
 #sign-letter a:nth-of-type(2),
 .styled-like-a {
 	border-radius: 0 0 5px 0;
@@ -340,8 +498,9 @@ body .ql-toolbar.ql-snow {
 	background-color: var(--emerald);
 }
 
-#stop-writing a:first-of-type:hover,
-#sign-letter a:first-of-type:hover {
+#stop a:first-of-type:hover,
+#sign-letter a:first-of-type:hover,
+#plan-trajectory a:first-of-type:hover {
 	background-color: var(--burnt-sienna);
 
 	transition: 5ms;

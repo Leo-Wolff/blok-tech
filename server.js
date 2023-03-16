@@ -1,13 +1,20 @@
 require("dotenv").config();
 const express = require("express");
 const Handlebars = require("handlebars");
+const bodyParser = require("body-parser");
 const app = express();
 const port = 3000;
 
-app.set("view engine", "handlebars");
+app.set("view engine", Handlebars);
 app.set("views", "view");
 
 app.use("/static", express.static("static"));
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+app.use(bodyParser.json());
 
 //ROUTES
 
@@ -47,7 +54,8 @@ app.post("/bottle", (req, res) => {
 	console.log("posted");
 	const db = client.db("bloktech");
 	const collectionLetters = db.collection("letters");
-	CreateNewDraft(collectionLetters, "hier komt de draft te staan"); // kan waarschijnlijk ophalen met body-parser
+	CreateNewDraft(collectionLetters, req.body.content, req.body.signed);
+
 	res.render("bottle.hbs");
 });
 
@@ -100,21 +108,19 @@ async function connectToCluster() {
 }
 
 async function getDataFromDatabase(dbCollection) {
-	try {
-		await connectToCluster();
-		const db = client.db("bloktech");
-		let collection = db.collection(dbCollection); // collectie naam
-		collection = GetDraftsFromDatabase(collection);
+	await connectToCluster();
+	const db = client.db("bloktech");
+	let collection = db.collection(dbCollection); // collectie naam
+	collection = GetDraftsFromDatabase(collection);
 
-		return collection;
-	} finally {
-	}
+	return collection;
 }
 
-async function CreateNewDraft(collection, content) {
+async function CreateNewDraft(collection, content, input) {
 	const draft = {
-		Letter: content,
-		Date: new Date().toISOString().slice(0, 10),
+		text: content,
+		signed: input,
+		dateUpdated: new Date().toISOString().slice(0, 10), // oorspronkelijk date is handiger voor aanpassen later
 	};
 
 	await collection.insertOne(draft);
