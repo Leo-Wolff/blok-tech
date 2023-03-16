@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 		<link rel="stylesheet" type="text/css" href="static/css/style.css" />
-		<link rel="stylesheet" type="text/css" href="static/css/slider.css" />
+		<link rel="stylesheet" type="text/css" href="static/css/slider-quill.css" />
 
 		<!-- Setting up Quill text editor -->
 		<link
@@ -94,7 +94,7 @@
 
 				<p>Age range</p>
 
-				<!-- source: https://codepen.io/tylerama/pen/YwvpBW?editors=0110 -->
+				<!-- This code was taking from the following source on 15/03/2023: https://codepen.io/tylerama/pen/YwvpBW?editors=0110 -->
 
 				<section class="range-slider container">
 					<span class="output outputOne"></span>
@@ -120,13 +120,13 @@
 				</section>
 
 				<p>Gender</p>
-				<div class="checkboxes">
-					<input id="check1" type="checkbox" name="gender" />
-					<label class="check-option" for="check1">Male</label>
-					<input id="check2" type="checkbox" name="gender" />
-					<label class="check-option" for="check2">Female</label>
-					<input id="check3" type="checkbox" name="gender" />
-					<label class="check-option" for="check3">Non-binary</label>
+				<div class="radio-buttons">
+					<input id="radio1" type="radio" name="gender" value="male" />
+					<label class="radio-option" for="radio1">Male</label>
+					<input id="radio2" type="radio" name="gender" value="female" />
+					<label class="radio-option" for="radio2">Female</label>
+					<input id="radio3" type="radio" name="gender" value="non-binary" />
+					<label class="radio-option" for="radio3">Non-binary</label>
 				</div>
 			</form>
 		</section>

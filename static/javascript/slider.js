@@ -1,4 +1,4 @@
-// source slider: https://codepen.io/tylerama/pen/YwvpBW?editors=0110
+// This code was taking from the following source on 15/03/2023: https://codepen.io/tylerama/pen/YwvpBW?editors=0110
 
 var rangeOne = document.querySelector('input[name="rangeOne"]'),
 	rangeTwo = document.querySelector('input[name="rangeTwo"]'),

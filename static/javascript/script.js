@@ -80,6 +80,7 @@ if (document.getElementById("open-form") != null) {
 if (document.getElementById("confirm-bottle") != null) {
 	document.getElementById("confirm-bottle").addEventListener("click", () => {
 		planPopup.classList.remove("hidden");
+		trajectoryPopup.classList.add("hidden");
 		console.log("Open plan trajectory pop-up");
 	});
 }

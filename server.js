@@ -16,12 +16,32 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-//ROUTES
+// fake data
+const profiles = [
+	{
+		username: "LeoWolff",
+		gender: "non-binary", // nonbinary = 2
+	},
+	{
+		username: "ApolloTheGod",
+		gender: "male", // male = 0
+	},
+	{
+		username: "Dumbledore",
+		gender: "male", // male = 0
+	},
+	{
+		username: "MirrorVisitor",
+		gender: "female", // female = 1
+	},
+];
 
+//ROUTES
+// dynamische pagina's hoef je niet te routen
 //home.hbs
 app.get("/", (req, res) => {
 	res.render("home.hbs");
-	res.status(200);
+	res.status(200); // hoeft niet
 });
 
 //bottle.hbs
@@ -52,9 +72,24 @@ app.get("/letter", (req, res) => {
 
 app.post("/bottle", (req, res) => {
 	console.log("posted");
-	const db = client.db("bloktech");
-	const collectionLetters = db.collection("letters");
-	CreateNewDraft(collectionLetters, req.body.content, req.body.signed);
+
+	if (req.body.content == null) {
+		const preference = req.body.gender;
+
+		// console.log(preference)
+
+		const filteredProfiles = profiles.filter((genderIdentity) => {
+			return genderIdentity.gender == preference;
+		});
+
+		console.log(filteredProfiles);
+
+		return preference;
+	} else {
+		const db = client.db("bloktech");
+		const collectionLetters = db.collection("letters");
+		CreateNewDraft(collectionLetters, req.body.content, req.body.signed);
+	}
 
 	res.render("bottle.hbs");
 });
@@ -67,7 +102,7 @@ app.get("/ocean", (req, res) => {
 
 //404 Error
 app.get("*", (req, res) => {
-	res.send("Error 404 Not found..");
+	res.send("Error 404 Not found.."); // res status 404
 });
 
 //Check if server is live
@@ -108,7 +143,7 @@ async function connectToCluster() {
 }
 
 async function getDataFromDatabase(dbCollection) {
-	await connectToCluster();
+	await connectToCluster(); // riscio dat het te laat word aangeroepen, doe dit eerder
 	const db = client.db("bloktech");
 	let collection = db.collection(dbCollection); // collectie naam
 	collection = GetDraftsFromDatabase(collection);
