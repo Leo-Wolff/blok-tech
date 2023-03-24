@@ -7,6 +7,7 @@ const signPopup = document.getElementById("sign-letter");
 const namePopup = document.getElementById("sign-name");
 
 // bottle.hbs pop-ups
+const photoPopup = document.getElementById("insert-photo");
 const planPopup = document.getElementById("plan-trajectory");
 const destinationPopup = document.getElementById("destination");
 const trajectoryPopup = document.getElementById("trajectory");
@@ -77,6 +78,20 @@ if (document.getElementById("open-form") != null) {
 }
 
 // bottle.hbs pop-ups
+if (document.getElementById("camera-button") != null) {
+	document.getElementById("camera-button").addEventListener("click", () => {
+		photoPopup.classList.remove("hidden");
+		console.log("Open insert photo pop-up");
+	});
+}
+
+if (document.getElementById("close-photo") != null) {
+	document.getElementById("close-photo").addEventListener("click", () => {
+		photoPopup.classList.add("hidden");
+		console.log("Close insert photo pop-up");
+	});
+}
+
 if (document.getElementById("confirm-bottle") != null) {
 	document.getElementById("confirm-bottle").addEventListener("click", () => {
 		planPopup.classList.remove("hidden");

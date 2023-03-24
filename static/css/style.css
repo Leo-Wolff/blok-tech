@@ -112,6 +112,19 @@ nav ul {
 
 /* ids */
 
+#insert-photo input[type="file"] {
+	border: 0;
+	border-radius: 0 0 5px 5px;
+	padding: 1em 0em 1em 0em;
+
+	width: 143%;
+
+	font-size: 1em;
+	text-align: center;
+	color: var(--almond);
+	background-color: var(--emerald);
+}
+
 #trajectory {
 	position: absolute;
 	top: 25em;
@@ -273,7 +286,7 @@ h1 {
 
 .draft-list li:first-of-type p {
 	padding-bottom: 1em;
-	box-shadow: inset 0px -3px var(--burnt-sienna);
+	box-shadow: inset 0 -3px var(--burnt-sienna);
 }
 
 .draft-item {
@@ -318,6 +331,7 @@ h1 {
 #close-button:hover,
 #confirm-letter:hover,
 #confirm-bottle:hover,
+#camera-button:hover,
 .styled-like-a:hover,
 #sign-name input[type="submit"] {
 	cursor: pointer;
@@ -350,10 +364,11 @@ h1 {
 #stop,
 #sign-letter,
 #sign-name,
+#insert-photo,
 #plan-trajectory,
 #destination {
 	position: absolute;
-	top: calc(50% - (137px / 2));
+	top: calc(50% - (8.5em / 2));
 	left: calc(50% - 10em);
 
 	margin: 0;
@@ -370,6 +385,7 @@ h1 {
 #stop img,
 #sign-letter img,
 #sign-name img,
+#insert-photo img,
 #plan-trajectory img,
 #close-destination {
 	position: absolute;
@@ -383,6 +399,7 @@ h1 {
 #stop img:hover,
 #sign-letter img:hover,
 #sign-name img:hover,
+#insert-photo img:hover,
 #plan-trajectory img:hover,
 #destination img:hover,
 #close-trajectory:hover,
@@ -392,6 +409,7 @@ h1 {
 
 #stop h2,
 #sign-letter h2,
+#insert-photo h2,
 #plan-trajectory h2,
 #destination h2 {
 	margin: 0;
@@ -404,10 +422,11 @@ h1 {
 	font-size: 1.25em;
 }
 
-#stop p,
-#sign-letter p,
-#plan-trajectory p,
-#destination p {
+#stop div,
+#sign-letter div,
+#insert-photo div,
+#plan-trajectory div,
+#destination div {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;

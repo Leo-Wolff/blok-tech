@@ -35,6 +35,7 @@
 		</div>
 
 		<img
+			id="camera-button"
 			class="bottlehbs-button"
 			src="static/img/camera-button.svg"
 			alt="Add photo"
@@ -62,22 +63,30 @@
 		<section id="stop" class="hidden">
 			<img id="close-stop" src="static/img/close-button.svg" alt="Cancel" />
 			<h2>Do you want to stop for now?</h2>
-			<p>
+			<div>
 				<a href="../">Exit</a>
 				<a href="drafts">Save as draft</a>
-			</p>
+			</div>
+		</section>
+
+		<section id="insert-photo" class="hidden">
+			<img id="close-photo" src="static/img/close-button.svg" alt="Cancel" />
+			<h2>Add a photo to put into your bottle</h2>
+			<div>
+				<input type="file" />
+			</div>
 		</section>
 
 		<section id="plan-trajectory" class="hidden">
 			<!-- Hide the section because for dev purposes the navigation will be easier to read this way -->
 			<img id="close-plan" src="static/img/close-button.svg" alt="Cancel" />
 			<h2>Before you throw your bottle, do you wanna plan your trajectory first?</h2>
-			<p>
+			<div>
 				<a id="open-destination">Send it as is</a>
 				<!--Sends you to "Where would you like to throw your bottle?" pop-up -->
 				<button id="open-trajectory-popup" class="styled-like-a">Plan trajectory</button>
 				<!--Sends you to plan trajectory form -->
-			</p>
+			</div>
 		</section>
 
 		<section id="trajectory" class="hidden">
