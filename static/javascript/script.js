@@ -8,6 +8,7 @@ const namePopup = document.getElementById("sign-name");
 
 // bottle.hbs pop-ups
 const photoPopup = document.getElementById("insert-photo");
+const photoInput = document.getElementById("insert-input");
 const planPopup = document.getElementById("plan-trajectory");
 const destinationPopup = document.getElementById("destination");
 const trajectoryPopup = document.getElementById("trajectory");
@@ -27,6 +28,50 @@ var quill = new Quill("#editor", {
 
 	theme: "snow",
 });
+
+// Get quill text input
+if (document.getElementById("open-form") != null) {
+	document.getElementById("open-form").addEventListener("click", () => {
+		var delta = quill.container.firstChild.innerHTML;
+		console.log(delta);
+		document.getElementById("content").value = delta;
+		console.log(document.getElementById("content").value);
+	});
+}
+
+// FileReader API
+if (photoInput != null) {
+	photoInput.addEventListener("change", (e) => {
+		let reader = new FileReader();
+
+		reader.onload = () => {
+			document.getElementById("output").src = reader.result;
+		};
+
+		reader.readAsDataURL(e.target.files[0]);
+
+		// output is hidden so that the border style only shows when an image is uploaded
+		document.getElementById("output").classList.remove("hidden");
+
+		// show a different button to fake a confirm button
+		document.getElementById("upload-photo").classList.add("hidden");
+		document.getElementById("confirm-photo").classList.remove("hidden");
+	});
+}
+
+// Add photo to bottle
+if (document.getElementById("confirm-photo") != null) {
+	document.getElementById("confirm-photo").addEventListener("click", () => {
+		document.getElementById("bottle").src =
+			"static/img/bottle-letter-photo-open.svg"; // add a polaroid photo into the bottle when a photo is selected
+
+		photoPopup.classList.add("hidden"); // hide the select photo pop-up
+
+		//make it so that when the user clicks on the pop-up again, they can upload a different photo
+		document.getElementById("upload-photo").classList.remove("hidden");
+		document.getElementById("confirm-photo").classList.add("hidden");
+	});
+}
 
 // POP-UPS
 document.getElementById("close-button").addEventListener("click", () => {
@@ -65,15 +110,6 @@ if (document.getElementById("close-form") != null) {
 	document.getElementById("close-form").addEventListener("click", () => {
 		namePopup.classList.add("hidden");
 		console.log("Close sign letter form pop-up");
-	});
-}
-
-if (document.getElementById("open-form") != null) {
-	document.getElementById("open-form").addEventListener("click", () => {
-		var delta = quill.container.firstChild.innerHTML;
-		console.log(delta);
-		document.getElementById("content").value = delta;
-		console.log(document.getElementById("content").value);
 	});
 }
 
@@ -143,6 +179,6 @@ if (document.getElementById("open-trajectory-popup") != null) {
 if (document.getElementById("close-trajectory") != null) {
 	document.getElementById("close-trajectory").addEventListener("click", () => {
 		trajectoryPopup.classList.add("hidden");
-		console.log("close plan trajectory form");
+		console.log("Close plan trajectory form");
 	});
 }

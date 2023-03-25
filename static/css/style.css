@@ -112,17 +112,45 @@ nav ul {
 
 /* ids */
 
-#insert-photo input[type="file"] {
+#insert-photo div {
+	flex-wrap: wrap;
+}
+
+#insert-photo label,
+#insert-photo div p {
 	border: 0;
 	border-radius: 0 0 5px 5px;
 	padding: 1em 0em 1em 0em;
 
+	cursor: pointer;
 	width: 143%;
 
 	font-size: 1em;
 	text-align: center;
 	color: var(--almond);
+	background-color: var(--burnt-sienna);
+}
+
+#insert-photo div p {
+	margin: 0;
+
 	background-color: var(--emerald);
+}
+
+#insert-photo #output {
+	position: relative;
+	top: 0;
+	right: 0;
+	float: none;
+
+	margin: 1em;
+	border: 15px solid var(--almond);
+
+	width: 10em;
+}
+
+#insert-photo #output:hover {
+	cursor: auto;
 }
 
 #trajectory {
@@ -171,7 +199,7 @@ nav ul {
 	right: 1em;
 	float: right;
 
-	border: solid 1px var(--black);
+	border: 1px solid var(--black);
 	padding: 0.5em 1.5em 0.5em 1.5em;
 
 	font-size: 1em;
@@ -344,7 +372,7 @@ h1 {
 	right: 1em;
 	float: right;
 
-	border: solid 1px var(--black);
+	border: 1px solid var(--black);
 	padding: 0.5em 1.5em 0.5em 1.5em;
 	box-shadow: 2px 2px var(--black);
 
@@ -380,6 +408,11 @@ h1 {
 	text-align: center;
 	color: var(--white);
 	background-color: var(--black);
+}
+
+/* Change height because the preview photos make it look awkwardly low */
+#insert-photo {
+	top: calc(50% - 8.5em);
 }
 
 #stop img,
@@ -491,7 +524,7 @@ h1 {
 }
 
 #sign-name input[type="text"]:focus {
-	outline: solid 3px var(--emerald);
+	outline: 3px solid var(--emerald);
 }
 
 #sign-name input[type="submit"] {

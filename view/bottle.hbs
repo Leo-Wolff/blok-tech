@@ -53,6 +53,7 @@
 		/>
 
 		<img
+			id="bottle"
 			class="bottle-editor"
 			src="static/img/bottle-letter-open.svg"
 			alt="Your bottle that currently has a letter in it"
@@ -73,7 +74,14 @@
 			<img id="close-photo" src="static/img/close-button.svg" alt="Cancel" />
 			<h2>Add a photo to put into your bottle</h2>
 			<div>
-				<input type="file" />
+				<input id="insert-input" class="hidden" type="file" accept="image/*" />
+				<img
+					id="output"
+					class="hidden"
+					alt="A preview of the image you have uploaded"
+				/>
+				<label id="upload-photo" for="insert-input">Upload photo</label>
+				<p id="confirm-photo" class="hidden">Select photo</p>
 			</div>
 		</section>
 
